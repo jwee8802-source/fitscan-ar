@@ -1,0 +1,150 @@
+<div class="main-container">
+  <!-- ✅ Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light vto-navbar">
+    <div class="container-fluid position-relative">
+      <!-- ☰ Menu Button -->
+      <button class="menu-btn" (click)="toggleSidebar()">☰</button>
+
+      <!-- Brand -->
+      <a class="navbar-brand ms-3">HD Shoe try</a>
+
+      <!-- Home Button -->
+      <a href="/home.php">
+        <img src="assets/image/home.png" alt="home-logo" class="home-logo" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- ✅ Sidebar -->
+  <div id="sidebar" class="sidebar" [class.active]="sidebarActive">
+    <button class="close-btn" (click)="toggleSidebar()">×</button>
+
+    <a id="tryOnBtn" href="javascript:void(0)" onclick="window.location.href='/angular-ar/index.html'">
+  <img src="assets/image/try1.png" alt="Try On">
+  <span>Try On</span>
+</a>
+
+<a id="cartBtn" href="/addtocart.php">
+  <img src="assets/image/cart.png" alt="Cart">
+  <span>Cart</span>
+</a>
+
+<a id="ordersBtn" href="/orderuser.php">
+  <img src="assets/image/orders.png" alt="Orders">
+  <span>Orders</span>
+</a>
+
+<a id="scanBtn" href="/scan.php">
+  <img src="assets/image/logo4.png" alt="Scan">
+  <span>Scan</span>
+</a>
+
+<a id="profileBtn" href="/account.php">
+  <img src="assets/image/account.png" alt="Profile">
+  <span>My Info</span>
+</a>
+
+<!-- Loading Overlays -->
+<div class="loading-overlay" *ngIf="loadingType === 'tryOnBtn'">
+  <div class="loader-logo-container">
+    <img src="assets/image/logo1.png" alt="Logo">
+    <div class="rotate-ring"></div>
+  </div>
+  <div class="loading-text">Directing to Try On...</div>
+</div>
+
+<div class="loading-overlay" *ngIf="loadingType === 'cartBtn'">
+  <div class="loader-logo-container">
+    <img src="assets/image/logo1.png" alt="Logo">
+    <div class="rotate-ring"></div>
+  </div>
+  <div class="loading-text">Directing to Add to Cart...</div>
+</div>
+
+<div class="loading-overlay" *ngIf="loadingType === 'ordersBtn'">
+  <div class="loader-logo-container">
+    <img src="assets/image/logo1.png" alt="Logo">
+    <div class="rotate-ring"></div>
+  </div>
+  <div class="loading-text">Directing to Orders...</div>
+</div>
+
+<div class="loading-overlay" *ngIf="loadingType === 'scanBtn'">
+  <div class="loader-logo-container">
+    <img src="assets/image/logo1.png" alt="Logo">
+    <div class="rotate-ring"></div>
+  </div>
+  <div class="loading-text">Directing to Scan...</div>
+</div>
+
+<div class="loading-overlay" *ngIf="loadingType === 'profileBtn'">
+  <div class="loader-logo-container">
+    <img src="assets/image/logo1.png" alt="Logo">
+    <div class="rotate-ring"></div>
+  </div>
+  <div class="loading-text">Directing to Account...</div>
+</div>
+
+
+    <hr class="sidebar-divider" />
+
+    
+    <!-- Mode Dropdown -->
+    <div class="dropdown w-100 px-3 mb-2">
+      <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Mode
+      </button>
+      <ul class="dropdown-menu w-100">
+        <li><a class="dropdown-item" *ngIf="mode !== 'shoes-on-vto'" (click)="switchMode('shoes-on-vto')">Shoes On</a></li>
+        <li><a class="dropdown-item" *ngIf="mode !== 'barefoot-vto'" (click)="switchMode('barefoot-vto')">Shoes Off</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ✅ Page Router -->
+  <div class="canvas">
+
+  <!-- AR / Page Content -->
+  <router-outlet></router-outlet>
+
+  <!-- 🔥 ACCESSORY CAROUSEL SA PINAKABABA -->
+  <div class="accessory-carousel-container bottom">
+    <button class="carousel-btn left" (click)="scrollCarousel(-1)">❮</button>
+
+    <div class="accessory-carousel" #carousel>
+
+      <div class="item" (click)="swapShoe('assets/3d-models/vansShoe.glb')">
+        <img src="assets/image/vans-removebg-preview.png" alt="Vans">
+      </div>
+
+      <div class="item" (click)="swapShoe('assets/3d-models/asicsShoe.glb')">
+        <img src="assets/image/asics-removebg-preview.png" alt="Asics">
+      </div>
+
+      <div class="item" (click)="swapShoe('assets/3d-models/converseShoeblack.glb')">
+        <img src="assets/image/conversebla-removebg-preview.png" alt="Converse">
+      </div>
+
+      <div class="item" (click)="swapShoe('assets/3d-models/VansOldskull.glb')">
+        <img src="assets/image/oldskool-removebg-preview.png" alt="Converse Black">
+      </div>
+
+      <div class="item" (click)="swapShoe('assets/3d-models/VansCream.glb')">
+        <img src="assets/image/cream-removebg-preview.png" alt="Converse Black">
+      </div>
+
+      <div class="item" (click)="swapShoe('assets/3d-models/conversemaroon.glb')">
+        <img src="assets/image/maroon-removebg-preview.png" alt="Converse Black">
+      </div>
+
+      <div class="item" (click)="swapShoe('assets/3d-models/Vansalcloud.glb')">
+        <img src="assets/image/cloud-removebg-preview.png" alt="Converse Black">
+      </div>
+
+    </div>
+  </div>
+  <!-- 🔥 END CAROUSEL -->
+
+</div>
+</div>
